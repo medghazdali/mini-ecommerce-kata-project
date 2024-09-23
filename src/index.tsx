@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 // Assert that 'root' is an HTMLElement
 const rootElement = document.getElementById('root') as HTMLElement;
@@ -9,9 +11,9 @@ const rootElement = document.getElementById('root') as HTMLElement;
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
-    <React.StrictMode>
+    <Provider store={store}>
       <App />
-    </React.StrictMode>,
+    </Provider>,
   );
 }
 

@@ -1,13 +1,21 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import ProductList from '../features/product/components/ProductList'; // Product List Component
+import { Container, Typography } from '@mui/material';
+import { useProductList } from '../features/product/hooks/useProductList';
 
 const ProductPage: React.FC = () => {
+  const { products, loading, error } = useProductList();
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
   return (
-    <Box sx={{ flexGrow: 1, padding: 3 }}>
-      <Typography variant="h4" component="h1" gutterBottom color="#A264FC">
-        ProductPage
+    <Container>
+      <Typography variant="h4" component="h1" gutterBottom>
+        Product List
       </Typography>
-    </Box>
+      <ProductList products={products} /> {/* Display products */}
+    </Container>
   );
 };
 

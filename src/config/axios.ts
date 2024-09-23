@@ -1,7 +1,8 @@
 import axios from 'axios';
+import Constants from './constants';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://yourapi.baseurl.com',
+  baseURL: Constants.BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
