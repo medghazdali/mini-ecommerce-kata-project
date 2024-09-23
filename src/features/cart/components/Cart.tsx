@@ -1,7 +1,8 @@
 import React from 'react';
-import { Drawer, Box, Typography, Grid, Button } from '@mui/material';
+import { Drawer, Box, Typography } from '@mui/material';
 import { useCart } from '../hooks/useCart';
 import CartItem from './CartItem';
+import Button from '../../../components/common/Button/Button';
 
 interface CartProps {
   isCartOpen: boolean;
@@ -9,7 +10,8 @@ interface CartProps {
 }
 
 const Cart: React.FC<CartProps> = ({ isCartOpen, toggleCart }) => {
-  const { cartItems, handleClearCart } = useCart();
+  const { cartItems, handleIncreaseQuantity, handleDecreaseQuantity, handleRemoveFromCart, handleClearCart } =
+    useCart();
 
   return (
     <Drawer anchor="right" open={isCartOpen} onClose={() => toggleCart(false)}>
@@ -21,17 +23,22 @@ const Cart: React.FC<CartProps> = ({ isCartOpen, toggleCart }) => {
         {cartItems.length === 0 ? (
           <Typography>Your cart is empty.</Typography>
         ) : (
-          <Grid container spacing={2}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '10px', marginBottom: '10px' }}>
             {cartItems.map((item) => (
-              <CartItem key={item.id} item={item} />
+              <CartItem
+                key={item.id}
+                product={item}
+                quantity={item.quantity}
+                onIncreaseQuantity={() => handleIncreaseQuantity(item.id)}
+                onDecreaseQuantity={() => handleDecreaseQuantity(item.id)}
+                onRemoveItem={() => handleRemoveFromCart(item.id)}
+              />
             ))}
-          </Grid>
+          </Box>
         )}
 
         {cartItems.length > 0 && (
-          <Button variant="contained" color="error" fullWidth onClick={handleClearCart}>
-            Clear Cart
-          </Button>
+          <Button variant="contained" color="error" fullWidth onClick={handleClearCart} label="Clear Cart" />
         )}
       </Box>
     </Drawer>
