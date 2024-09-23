@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from '../context/AuthContext';
 import { RequireAuth } from '../utils/RequireAuth';
 import MainLayout from '../components/layout/MainLayout';
-import DashboardPage from '../pages/DashboardPage';
-import ProductPage from '../pages/ProductPage';
+import ProductsPage from '../pages/ProductsPage';
 import NotFoundPage from '../pages/NotFoundPage';
+import ProductDetailPage from '../pages/ProductDetailPage';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -14,10 +14,9 @@ const AppRoutes: React.FC = () => {
         <MainLayout>
           <Routes>
             {/* Public Routes */}
-            <Route path="/" element={<DashboardPage />} />
-            <Route path="/products" element={<ProductPage />} />
-            <Route path="/second" element={<div>Second Route</div>} />
-
+            <Route path="/" element={<ProductsPage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/products/:productId" element={<ProductDetailPage />} />
             {/* Protected Route */}
             <Route
               path="/checkout"

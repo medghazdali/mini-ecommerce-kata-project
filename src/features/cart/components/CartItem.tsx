@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Avatar, Typography, IconButton } from '@mui/material';
 import { Product } from '../../../types/Product';
 import { CustomCard } from '../../../components/common/Card/CustomCard';
-import RemoveIcon from '@mui/icons-material/Delete'; // Example icon
+import RemoveIcon from '@mui/icons-material/Delete';
 import Button from '../../../components/common/Button/Button';
 
 interface RowCardProps {
@@ -26,7 +26,7 @@ const RowCard: React.FC<RowCardProps> = ({
         <Avatar
           src={product.image}
           alt={product.title}
-          sx={{ width: 50, height: 50, marginRight: 2, borderRadius: 1 }}
+          sx={{ width: 50, height: 50, marginRight: 2, borderRadius: 1, objectFit: 'contain' }}
         />
         <Box>
           <Typography variant="h6" fontSize={12}>

@@ -15,6 +15,8 @@ interface UseCartReturn {
   handleIncreaseQuantity: (productId: number) => void;
   handleDecreaseQuantity: (productId: number) => void;
   handleRemoveFromCart: (productId: number) => void;
+  isInCart: (productId: number) => boolean;
+  getCartItem: (productId: number) => CartItem | undefined;
   handleClearCart: () => void;
   totalItems: number;
 }
@@ -42,6 +44,13 @@ export const useCart = (): UseCartReturn => {
   const handleClearCart = () => {
     dispatch(clearCart());
   };
+  const isInCart = (productId: number) => {
+    return cartItems.some((item) => item.id === productId);
+  };
+
+  const getCartItem = (productId: number) => {
+    return cartItems.find((item) => item.id === productId);
+  };
 
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
@@ -53,5 +62,7 @@ export const useCart = (): UseCartReturn => {
     handleRemoveFromCart,
     handleClearCart,
     totalItems,
+    isInCart,
+    getCartItem,
   };
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import { CardContent, CardMedia, Typography, Button, Box } from '@mui/material';
 import { Product } from '../../../types/Product';
 import { CustomCard } from '../../../components/common/Card/CustomCard';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductCardProps {
   product: Product;
@@ -9,6 +10,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
+  const navigate = useNavigate();
   return (
     <CustomCard sx={{ maxWidth: 345, height: '380px', margin: '20px' }} shadow>
       <CardMedia component="img" height="150" image={product.image} alt={product.title} sx={{ objectFit: 'contain' }} />
@@ -23,6 +25,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
           }}
         >
           <Typography
+            onClick={() => {
+              navigate(`/products/${product.id}`);
+            }}
             variant="h6"
             component="div"
             sx={{

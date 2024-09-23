@@ -8,7 +8,7 @@ export const NotFoundPage: React.FC = () => {
     <Container sx={{ padding: 10, textAlign: 'center' }}>
       <Box sx={{ flexGrow: 1, padding: 3 }}>
         <Typography variant="h4" component="h1" gutterBottom color="#A264FC">
-          Not found !!
+          Page not found !!
         </Typography>
       </Box>
       <Button
