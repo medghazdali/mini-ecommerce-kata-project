@@ -227,11 +227,11 @@ The app is deployed using Vercel for automatic CI/CD integration. Every push to 
 To deploy the app manually:
 
 Push your latest changes to GitHub.
-Vercel/Netlify will automatically deploy the app. You can access the live URL (e.g., https://mini-ecommerce-kata-project-pihpgb9rl.vercel.app/).
+Vercel/Netlify will automatically deploy the app. You can access the live URL (e.g., https://mini-ecommerce-kata-project.vercel.app/).
 
 ---
 ## Contributing
 Contributions are welcome! Feel free to submit a pull request or open an issue for any improvements.
 
 Live Demo
-You can access the live version of the app here: https://mini-ecommerce-kata-project-pihpgb9rl.vercel.app/
+You can access the live version of the app here: https://mini-ecommerce-kata-project.vercel.app/

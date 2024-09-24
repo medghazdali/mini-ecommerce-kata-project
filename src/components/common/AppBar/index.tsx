@@ -34,24 +34,31 @@ const AppBar: React.FC = () => {
       <AppBarMui position="static">
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <ShopIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="#"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
+            <Box
+              onClick={() => {
+                navigate('/');
               }}
+              sx={{ display: 'flex' }}
             >
-              KATA
-            </Typography>
+              <ShopIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+              <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                href="#"
+                sx={{
+                  mr: 2,
+                  display: { xs: 'none', md: 'flex' },
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                KATA
+              </Typography>
+            </Box>
 
             {/* Nav Menu for smaller screens */}
             <NavMenu />
