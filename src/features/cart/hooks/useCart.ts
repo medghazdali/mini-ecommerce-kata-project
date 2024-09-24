@@ -19,6 +19,7 @@ interface UseCartReturn {
   getCartItem: (productId: number) => CartItem | undefined;
   handleClearCart: () => void;
   totalItems: number;
+  totalAmount: number;
 }
 export const useCart = (): UseCartReturn => {
   const dispatch = useAppDispatch();
@@ -51,7 +52,9 @@ export const useCart = (): UseCartReturn => {
   const getCartItem = (productId: number) => {
     return cartItems.find((item) => item.id === productId);
   };
-
+  const totalAmount = cartItems.reduce((sum, item) => {
+    return sum + item.price * item.quantity;
+  }, 0);
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return {
@@ -64,5 +67,6 @@ export const useCart = (): UseCartReturn => {
     totalItems,
     isInCart,
     getCartItem,
+    totalAmount,
   };
 };

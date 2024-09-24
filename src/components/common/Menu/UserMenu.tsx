@@ -25,7 +25,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, anchorElUser, handleOpenUserM
   const handleLogout = () => {
     logout();
     handleCloseUserMenu();
-    navigate('/auth/login');
+    navigate('/login');
   };
 
   return (
@@ -33,7 +33,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, anchorElUser, handleOpenUserM
       {user ? (
         <>
           <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, marginLeft: 2 }}>
               <Avatar alt={user.username || 'User'} />
             </IconButton>
           </Tooltip>
@@ -55,7 +55,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ user, anchorElUser, handleOpenUserM
           </Menu>
         </>
       ) : (
-        <MenuItem onClick={() => navigate('/auth/login')}>
+        <MenuItem onClick={() => navigate('/login')}>
           <Typography textAlign="center">Connexion</Typography>
         </MenuItem>
       )}

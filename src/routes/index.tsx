@@ -6,6 +6,9 @@ import MainLayout from '../components/layout/MainLayout';
 import ProductsPage from '../pages/ProductsPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import ProductDetailPage from '../pages/ProductDetailPage';
+import CheckoutPage from '../pages/CheckoutPage';
+import LoginPage from '../pages/LoginPage';
+import RedirectIfAuthenticated from '../utils/RedirectIfAuthenticated';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -14,6 +17,9 @@ const AppRoutes: React.FC = () => {
         <MainLayout>
           <Routes>
             {/* Public Routes */}
+            <Route element={<RedirectIfAuthenticated />}>
+              <Route path="/login" element={<LoginPage />} />
+            </Route>
             <Route path="/" element={<ProductsPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/products/:productId" element={<ProductDetailPage />} />
@@ -22,8 +28,7 @@ const AppRoutes: React.FC = () => {
               path="/checkout"
               element={
                 <RequireAuth>
-                  {/* @TODO :: <CheckoutPage /> */}
-                  <>CheckoutPage</>
+                  <CheckoutPage />
                 </RequireAuth>
               }
             />

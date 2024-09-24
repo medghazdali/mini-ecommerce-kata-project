@@ -3,6 +3,7 @@ import { Drawer, Box, Typography } from '@mui/material';
 import { useCart } from '../hooks/useCart';
 import CartItem from './CartItem';
 import Button from '../../../components/common/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 interface CartProps {
   isCartOpen: boolean;
@@ -10,9 +11,15 @@ interface CartProps {
 }
 
 const Cart: React.FC<CartProps> = ({ isCartOpen, toggleCart }) => {
-  const { cartItems, handleIncreaseQuantity, handleDecreaseQuantity, handleRemoveFromCart, handleClearCart } =
-    useCart();
-
+  const {
+    cartItems,
+    handleIncreaseQuantity,
+    handleDecreaseQuantity,
+    handleRemoveFromCart,
+    handleClearCart,
+    totalAmount,
+  } = useCart();
+  const navigate = useNavigate();
   return (
     <Drawer anchor="right" open={isCartOpen} onClose={() => toggleCart(false)}>
       <Box sx={{ width: 350, p: 2 }}>
@@ -40,6 +47,8 @@ const Cart: React.FC<CartProps> = ({ isCartOpen, toggleCart }) => {
         {cartItems.length > 0 && (
           <Button variant="contained" color="error" fullWidth onClick={handleClearCart} label="Clear Cart" />
         )}
+        <Typography variant="h6">Total: ${totalAmount.toFixed(2)}</Typography>
+        <Button variant="contained" onClick={() => navigate('/checkout')} sx={{ mt: 2 }} label="Proceed to Checkout" />
       </Box>
     </Drawer>
   );
